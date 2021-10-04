@@ -1,9 +1,9 @@
-    $(document).ready(function () {  //페이지가 모두 로드되면 실행
-        loadMenuBar();
-        loadCadCard();
-    });
+    // $(document).ready(function () {  //페이지가 모두 로드되면 실행 *regions에서 특정 시,도를 선택해 cat-list로 넘어오면, 해당하는 데이터만 보이도록.
+    //     loadMenuBar();
+    //     loadCadCard();
+    // });
 
-    //* 캣 카드 클릭시 특정 모달이 뜨도록 하는 것 추가
+    
 
     function loadMenuBar(){ //menu-bar 시,도 이름 로드
         $.ajax({
@@ -13,7 +13,7 @@
         data : json_data,
         success: function(data){ //json 데이터를 반환 받음
             
-            let sido = data.sido;//데이터의 sido key값을 정의해줌
+            //데이터의 sido key값을 정의해줌
 
             //sidoName html 정의
             let sidoName = `<li class="menu-bar-box"> 
@@ -26,16 +26,16 @@
         }}
         )};
 
-        function loadCadCard(){ //cat cards 로드 *특정 시,도를 클릭하면 해당하는 카드가 나오도록.  
+        function loadCadCard(sido){ //cat cards 로드 *특정 시,도를 클릭하면 해당하는 카드가 나오도록. + 모달창
             $.ajax({
-                type : "GET",
-                url: "", //json 경로
+                type : "POST",
+                url: "/cat_card_sido", //json 경로
                 dataType: "json",
-                data : json_data,
+                data : {sido_give:sido}, //도시이름
                 success: function(data){ //json 데이터를 반환 받음
                 
-                let sido = data.sido;//데이터의 sido key값을 정의해줌
-
+                let cat_number = data.sido;//데이터의 sido key값을 정의해줌
+                
                 //catCard html 정의
                 let catCard = `<div id= "${cat_number}" " class="cat-card" style="width: 18rem;" onclick="location.href='#'">
                                     <img class="card-img-top" src="${cat_imgurl}" alt="Card image cap">
@@ -43,24 +43,8 @@
                                 </div>`
                                 
                 $('.catcards-box').append(catCard); // cat cards 등장
-                
-            }}
-        )};
 
-        function loadModal() { //모달창 데이터 로드 *매개변수전달?
-            $.ajax({
-                type : "GET",
-                url: "", //json 경로
-                dataType: "json",
-                data : json_data,
-                success: function(data){
-                    let sido = data.sido;
-                    let sido = data.sido; //모달안에 들어가는 데이터 key값 정의
-
-                    
-                
-                    //modalData 정의
-                    let modalData = `<ul>
+                let modalData = `<ul>
                                     <li>
                                         <span class="modal-title">공고번호</span><span class="modal-text">${''}</span>
                                     </li>
@@ -84,6 +68,20 @@
                                 </ul>`
                                 
                     $('.modal__content').append(modalData) //모달창에 데이터 뜸
+            }}
+        )};
+
+        function loadModal() { //모달창 데이터 로드 
+            $.ajax({
+                type : "GET",
+                url: "", //json 경로
+                dataType: "json",
+                data : json_data,
+                success: function(data){
+                     //모달안에 들어가는 데이터 key값 정의
+                
+                    //modalData 정의
+                    
                 }}
         )};
 

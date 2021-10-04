@@ -32,9 +32,13 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!-- ajax.js import -->
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
+
+
+
 </head>
-</script>
-<!-- Background -->
+
 <style>
     body {
         background: linear-gradient(var(--bg-color),white);
@@ -49,10 +53,9 @@
     <nav class="nav-bar">
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
-                <li><a href="regions.html">FIND</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">REVIEW</a></li>
-                <li><a href="#">LOGIN</a></li>
+                <li><a href="/regions">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/login">LOGIN</a></li>
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="#">나의 고양이 취향은?</a></li>
@@ -67,43 +70,6 @@
         <li class="menu-bar-box">
             <span class="do-name">도 이름</span>
             
-            <ul class="menu-bar-list">
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-
-            </ul>
-        </li>
-
-        <li class="menu-bar-box">
-            <span class="do-name">도 이름</span>
-            
-            <ul class="menu-bar-list">
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-                <li class="si-name" onclick="location.href='#'">
-                    - 시 이름
-                </li>
-            </ul>
         </li>
 
 
@@ -115,11 +81,6 @@
             <img class="card-img-top" src="https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg" alt="Card image cap">
             <p class="card-text">공고번호가 들어올 자리 ^^</p>
         </div>
-        <div class="cat-card" style="width: 18rem;" onclick="location.href='#'">
-            <img class="card-img-top" src="https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg" alt="Card image cap">
-            <p class="card-text">공고번호가 들어올 자리 ^^</p>
-        </div>
-        
     </div>
    
 <!-- 모달창 -->
@@ -154,11 +115,9 @@
     </div>
 </div>
 
-    <script>
-
     
-
-        //첫 화면에 시 이름 안보이게
+    <script>
+        /*첫 화면에 시 이름 안보이게
         $('.menu-bar-list').hide();
 
         //도 이름을 클릭하면 시 이름이 나타나게//
@@ -171,7 +130,7 @@
             });
             //$(this).next().show();
             $(this).next().slideDown('fast');
-        });
+        });*/
         
         
         /*모달창 기능 jQuery */
@@ -198,8 +157,6 @@
         }
         openButton.addEventListener('click', openModal); //onModal
         overlay.addEventListener('click',closeModal); //offModal (모달창 영역 밖 클릭) */
-
-
     </script>
         
 
