@@ -1,0 +1,66 @@
+//api 데이터에서 도, 시 이름 따오기 -> 작성중!!!
+    $(window).on('load',function() {// 로딩 되자마자
+        $.ajax({
+            type: "GET", //서버 쪽으로 데이터 전송시 어떤 메소드를 쓸건지
+            url: "http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?ServiceKey=s4XAUESW5fa5fRoIqHXjJo%2BVcO1j2ZufPKfWcT%2BrIlW251tUZQyL%2FFavdzg%2FopmeWZyCN%2BbGstzrThUHNaKRjQ%3D%3D&bgnde=20210601&endde=20210801&upkind=422400&numOfRows=10", //ajax로 서버와 통신할 때 그 서버가 위치하는 url
+            data: {}, //서버에 전송될 데이터
+            dataType:'json', //서버가 리턴해주는 데이터 타입
+            success: function (response) { //ajax와 서버 통신 성공시 호출될 함수, response -> 서버가 리턴해준 데이터
+                let rows = response[""][""]; //ajax 데이터 중 원하는 데이터
+                for (let i =0; i<rows.length; i++){ //데이터 반복
+                    let do_name = rows[i][''];
+                    let si_name = rows[i]['']; //필요한 데이터 변수 선언
+
+                    //모달창에 붙을 정보들
+
+                    let cat_image = rows[i]['']; //고양이이미지
+                    let cat_number = rows[i]['']; //공고번호
+                    let cat_color = rows[i]['']; //색상
+                    let cat_sex = rows[i]['']; //성별
+                    let cat_age = rows[i]['']; //나이
+                    let cat_kg = rows[i]['']; //체중
+                    let cat_note = rows[i]['']; //특징
+                    let cat_neuter = rows[i]['']; //중성화 
+                    let cat_region = rows[i]['']; //관할기관(지역)
+                    let cat_center = rows[i]['']; //보호센터
+                    let cat_address = rows[i]['']; //주소
+                    let cat_phone = rows[i]['']; //연락처
+
+                    let temp_html_sido = `<span class="do-name">${'do_name'}</span>
+                                            <ul class="menu-bar-list">
+                                                <li class="si-name" onclick="location.href='#'">- ${'si_name'}
+                                                </li>
+                                            </ul>`
+                    $('.menu-bar-box').append(temp_html_sido); //메뉴바에 html로 데이터 붙여주기
+
+                    let temp_html_modal = `<img class="modal-img" src="${'cat_image'}" alt="고양이 이미지">
+                                            <img class="modal-logo" src="/static/logo.png" alt="데려갈꼬냥?" >
+                                            <ul>
+                                                <li>
+                                                    <span class="modal-title">${'cat_number'}</span><span class="modal-text">서울-관악-2021-00449</span>
+                                                </li>
+                                                <li>
+                                                    <span class="modal-title">${'cat_color'} / ${'cat_sex'}</span><span class="modal-text">삼색 / 암컷</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_age'} / ${'cat_kg'}</span><span class="modal-text">2021(년생) / 0.4(kg)</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_note'}</span><span class="modal-text">구청신고,탈진,호흡기질환,설사</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_nueter'}</span><span class="modal-text">아니오</span>
+                                                </li>
+                                                <li>
+                                                    <span class="modal-title">${'cat_region'}</span><span class="modal-text">서울특별시 관악구</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_center'}</span><span class="modal-text">러브펫종합동물병원</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_address'}</span><span class="modal-text">서울특별시 관악구 남부순환로 1429 (신림동)</span>
+                                                    <br>
+                                                    <span class="modal-title">${'cat_phone'}</span><span class="modal-text">02-837-8875</span>
+                                                </li>
+                                            </ul>`
+                    $('.modal__content').append(temp_html_modal);  //모달창에 html로 데이터 붙여주기
+                    $('.catcards-box').append(temp_html_modal);  //고양이카드에 html로 데이터 붙여주기 (???)
+                }
+            }
+        });
+    });

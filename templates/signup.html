@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>join</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <link href="/static/css/styles.css" rel="stylesheet" />
+</head>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Noto Sans KR", sans-serif;
+    }
+
+    body {
+        background: linear-gradient(var(--bg-color), white);
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrap {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    h2 {
+        color: black;
+        font-size: 30px;
+    }
+</style>
+
+<body>
+    <!-- Nav-bar -->
+    <nav class="nav-bar">
+        <div class="nav-bar-box">
+            <ul class="nav-bar__list">
+                <li><a href="regions.html">FIND</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">REVIEW</a></li>
+                <li><a href="#">LOGIN</a></li>
+            </ul>
+            <ul class="nav-bar__list-2">
+                <li><a href="#">나의 고양이 취향은?</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="wrap">
+        <div class="join-box_wrap">
+            <form action="{{url_for('signup_done')}}" class="join-join" method="POST">
+                <h2>JOIN</h2>
+                <div class="join_id">
+                    <h4>ID</h4>
+                    <input type="id" name="uid" placeholder="id">
+                </div>
+                <div class="join_pw">
+                    <h4>Password</h4>
+                    <input type="password" name="pwd" placeholder="password">
+                </div>
+                <div class="join_name">
+                    <h4>Name</h4>
+                    <input type="name" name="name"  placeholder="name">
+                </div>
+                <div class="join_email">
+                    <h4>E-mail</h4>
+                    <input type="email" name="email" placeholder="email">
+                </div>
+                <div class="join_submit">
+                    <input type="submit" value="Click">
+                </div>
+            </form>    
+        </div>
+    </div>
+</body>
+</html>
