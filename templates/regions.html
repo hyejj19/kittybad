@@ -26,7 +26,10 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
         </script>
     <!-- jQuery -->
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- ajax.js import -->
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
 
 </head>
 
@@ -50,9 +53,8 @@
     <nav class="nav-bar">
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
-                <li><a href="/regions">FIND</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">REVIEW</a></li>
+                <li><a href="/regions">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
                 <li><a href="/login">LOGIN</a></li>
             </ul>
             <ul class="nav-bar__list-2">
@@ -72,26 +74,25 @@
             <div class="regions-cover">
                 <div class="regions-cover__box">
                     <div class="regions-cover__row">
-                        <a href="cat-list.html">
+                        <a href="/cat_list" onclick="loadCadCard('seoul')">
                             <div class="regions-cover__row-circle">
-                                <img
-                                    src="https://i.natgeofe.com/n/3861de2a-04e6-45fd-aec8-02e7809f9d4e/02-cat-training-NationalGeographic_1484324_square.jpg">
+                                <img src="https://i.natgeofe.com/n/3861de2a-04e6-45fd-aec8-02e7809f9d4e/02-cat-training-NationalGeographic_1484324_square.jpg">
                                 <span class="original-span">서울</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('busan')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2013/05/30/18/21/cat-114782_960_720.jpg">
                                 <span class="original-span">부산</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('incheon')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2016/02/10/16/37/cat-1192026_960_720.jpg">
                                 <span class="original-span">인천</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('busan')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_960_720.jpg">
                                 <span class="original-span">대전</span>
@@ -99,19 +100,19 @@
                         </a>
                     </div>
                     <div class="regions-cover__row">
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('gwangju')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2014/05/07/06/44/cat-339400_960_720.jpg">
                                 <span class="original-span">광주</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('tk')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2016/01/20/13/05/cat-1151519_960_720.jpg">
                                 <span class="original-span">대구</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('ulsan')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2014/03/29/09/17/cat-300572_960_720.jpg">
                                 <span class="original-span">울산</span>
@@ -124,13 +125,13 @@
 
                 <div class="regions-cover__box">
                     <div class="regions-cover__row">
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('kkd')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg">
                                 <span class="original-span">경기도</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('kwd')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2021/08/06/06/41/cat-6525495_960_720.jpg">
                                 <span class="original-span">강원도</span>
@@ -143,9 +144,13 @@
                                 <img src="https://cdn.pixabay.com/photo/2016/09/07/22/38/cat-1652822_960_720.jpg">
                                 <span id="circle-section__span-hide1" class="original-span">충청도</span>
                                 <div id="circle-section1">
-                                    <span class="circle-section__span-show1" onclick="location.href='#'">충청북도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('ccbd')">
+                                    <span class="circle-section__span-show1">충청북도</span>
+                                    </a>
                                     <hr class="circle-section__divider">
-                                    <span class="circle-section__span-show2" onclick="location.href='#'">충청남도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('ccnd')">
+                                    <span class="circle-section__span-show2">충청남도</span>
+                                </a>
                                 </div>
                             </div>
                         </a>
@@ -154,9 +159,13 @@
                                 <img src="https://cdn.pixabay.com/photo/2021/07/25/20/47/cat-6492741_960_720.jpg">
                                 <span id="circle-section__span-hide2" class="original-span">전라도</span>
                                 <div id="circle-section2">
-                                    <span class="circle-section__span-show1" onclick="location.href='#'">전라북도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('jlbd')">
+                                        <span class="circle-section__span-show1" >전라북도</span>
+                                    </a>
                                     <hr class="circle-section__divider">
-                                    <span class="circle-section__span-show2" onclick="location.href='#'">전라남도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('jlnd')">
+                                        <span class="circle-section__span-show2">전라남도</span>
+                                    </a>
                                 </div>
                             </div>
                         </a>
@@ -167,13 +176,18 @@
                                 <img src="https://cdn.pixabay.com/photo/2012/10/12/17/12/cat-61079_960_720.jpg">
                                 <span id="circle-section__span-hide3" class="original-span">경상도</span>
                                 <div id="circle-section3">
-                                    <span class="circle-section__span-show1" onclick="location.href='#'">경상북도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('ksbd')">
+                                        <span class="circle-section__span-show1" >경상북도</span>
+                                    </a>
                                     <hr class="circle-section__divider">
-                                    <span class="circle-section__span-show2" onclick="location.href='#'">경상남도</span>
+                                    <a href="/cat_list" onclick="loadCadCard('ksnd')">
+                                        <span class="circle-section__span-show2" >경상남도</span>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="/cat_list" onclick="loadCadCard('jeju')">
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2017/03/29/09/59/cat-2184682_960_720.jpg">
                                 <span class="original-span">제주도</span>

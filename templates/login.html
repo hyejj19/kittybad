@@ -57,10 +57,9 @@
     <nav class="nav-bar">
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
-                <li><a href="regions.html">FIND</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">REVIEW</a></li>
-                <li><a href="#" class="login_btn">LOGIN</a></li>
+                <li><a href="/regions">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/login" class="login_btn">LOGIN</a></li>
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="#">나의 고양이 취향은?</a></li>
@@ -90,7 +89,7 @@
         <!-- 회원가입 form 태그  -->
         <div class="login-join">
             <div class="login-join__submit">
-                <input type="button" value="회원가입" onClick= "">
+                <input type="button" value="회원가입" onClick= "window.location.href='/signup'">
             </div>
         </form>
         </div>
@@ -121,7 +120,6 @@
             type:'get', // 메소드
             data:{}, //보낼 데이터
             success: function(response) {
-                sessionStorage.clear();
                 alert('로그아웃!');
                 window.location.href = "/index";
                 }
