@@ -8,10 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link href="/static/css/styles.css" rel="stylesheet" />
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 </head>
 
 <style>
@@ -52,14 +48,14 @@
 </style>
 
 <body>
-    
     <!-- Nav-bar -->
     <nav class="nav-bar">
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
-                <li><a href="/regions">HOME</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/login" class="login_btn">LOGIN</a></li>
+                <li><a href="regions.html">FIND</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">REVIEW</a></li>
+                <li><a href="#">LOGIN</a></li>
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="#">나의 고양이 취향은?</a></li>
@@ -70,7 +66,7 @@
     <div class="login-box">
         <div class="login-box__wrap">
             <!-- 로그인 form 태그 -->
-            <div class="login-login"> 
+            <form action="{{url_for('login_done')}}" class="login-login" method="POST"> 
                 <h2>LOGIN</h2>
                 <div class="login_id">
                     <h4>ID</h4>
@@ -82,55 +78,19 @@
                 </div>
     
                 <div class="login-login__submit">
-                    <input type="submit" value="로그인" onclick="logIn()">
+                    <input type="submit" value="로그인">
                 </div>
-        </div>
+        </form>
 
         <!-- 회원가입 form 태그  -->
-        <div class="login-join">
+        <form class="login-join" action="">
             <div class="login-join__submit">
-                <input type="button" value="회원가입" onClick= "window.location.href='/signup'">
+                <input type="button" value="회원가입" onClick="window.location.href='/signup'">  
             </div>
         </form>
         </div>
         
     </div>
-
-
-    <!-- 로그인 로그아웃 스위치 -->
-<script>
-    
-
-    function logIn () {
-        $.ajax({
-            url:'/login_done', //request 보낼 서버의 경로
-            type:'post', // 메소드
-            data:{'uid':'','pwd':''}, //보낼 데이터
-            success: function(response) {
-                if (login = 'True') {
-                    $('.login_btn').html('<li><a href="#" class="logut_btn" onclick ="logOut()">LOGOUT</a></li>'); 
-                    }
-                }
-            }
-        )};
-
-    function logOut () {
-        $.ajax({
-            url:'/log_out', //request 보낼 서버의 경로
-            type:'get', // 메소드
-            data:{}, //보낼 데이터
-            success: function(response) {
-                alert('로그아웃!');
-                window.location.href = "/index";
-                }
-                
-            })
-        };
-
-
-        
-
-</script>
 
 </body>
 </html>

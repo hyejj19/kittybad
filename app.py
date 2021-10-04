@@ -172,9 +172,13 @@ def signup_done():
 #  api 정보
 @app.route('/cat_card_sido', methods=['GET', 'POST'])
 def cat_card_sido():
-    api_data('경기도')
+    sido = request.form['sido_give']
+    sido = str(sido) 
+    api_data(sido)
+    print(sido, all_cat_id[0])
+
     return redirect(
-        url_for('/cat_list.html'),
+        url_for('cat_list',
         all_cat_id=all_cat_id,  # '유기번호
         all_sido=all_sido,  # '지역'
         all_notice_day=all_notice_day,  # 공고일
@@ -187,9 +191,9 @@ def cat_card_sido():
         all_care_name=all_care_name,  # 보호소 명
         all_care_tel=all_care_tel,  # 보호소 연락처
         all_care_addr=all_care_addr  # 보호소 주소
-    )
+    ))
 
-
+    
 @app.route('/cat_list', methods=['GET', 'POST'])
 def cat_list():
     return render_template('/cat_list.html')
