@@ -90,7 +90,7 @@
         <!-- 회원가입 form 태그  -->
         <div class="login-join">
             <div class="login-join__submit">
-                <input type="button" value="회원가입" onClick= "">
+                <input type="button" value="회원가입" onClick= "window.location.href='/signup'">
             </div>
         </form>
         </div>
@@ -121,7 +121,6 @@
             type:'get', // 메소드
             data:{}, //보낼 데이터
             success: function(response) {
-                sessionStorage.clear();
                 alert('로그아웃!');
                 window.location.href = "/index";
                 }
