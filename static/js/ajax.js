@@ -9,9 +9,9 @@
         $.ajax({
         type : "GET",
         url: "/cat_card_sido", //json 경로
-        dataType: "json",
+        data:{},
         success: function(data){ //json 데이터를 반환 받음
-            
+            console.log(data);
             
             let sido = data['all_sido']; //데이터의 sido key값을 정의해줌
             for (let i in sido){
@@ -29,12 +29,14 @@
             $.ajax({
                 type : "POST",
                 url: "/cat_card_sido", //json 경로
-                dataType: "json",
                 data : {sido_give:sido}, //도시이름
                 success: function(data){ //json 데이터를 반환 받음
                 
-                //데이터의 sido key값을 정의해줌
-                let cat_id = data.all_cat_id;
+                for (let i = 0; i < data.length; i++) {
+                    
+                    let sido = data[i]['all_sido'];
+                }
+                
                 
                 //catCard html 정의
                 let catCard = `<div id= "${cat_id}" " class="cat-card" style="width: 18rem;" onclick="location.href='#'">
