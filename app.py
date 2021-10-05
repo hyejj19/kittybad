@@ -172,6 +172,7 @@ def signup_done():
 @app.route('/cat_card_sido', methods=['GET', 'POST'])
 def cat_card_sido():
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     api_data('경기도')
     return redirect(
         url_for('/cat_list.html'),
@@ -189,6 +190,8 @@ def cat_card_sido():
         all_care_addr=all_care_addr  # 보호소 주소
     )
 =======
+=======
+>>>>>>> Stashed changes
     sido = request.args.get('sido_give')
     sido = str(sido)
     api_data(sido)
@@ -207,6 +210,9 @@ def cat_card_sido():
         "all_care_tel": all_care_tel,  # 보호소 연락처
         "all_care_addr": all_care_addr,  # 보호소 주소
     })
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
