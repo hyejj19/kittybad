@@ -8,10 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link href="/static/css/styles.css" rel="stylesheet" />
+<<<<<<< Updated upstream
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+=======
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+>>>>>>> Stashed changes
 </head>
 
 <style>
@@ -59,7 +64,11 @@
             <ul class="nav-bar__list">
                 <li><a href="/regions">HOME</a></li>
                 <li><a href="/about">ABOUT</a></li>
+<<<<<<< Updated upstream
                 <li><a href="/login" class="login_btn">LOGIN</a></li>
+=======
+                <li><a href="/login">LOGIN</a></li>
+>>>>>>> Stashed changes
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="#">나의 고양이 취향은?</a></li>
@@ -93,8 +102,22 @@
             </div>
         </form>
         </div>
-        
     </div>
+<script>
+    
+    function logIn () {
+        $.ajax({
+            url:'/login_done', //request 보낼 서버의 경로
+            type:'post', // 메소드
+            data:{'uid':'','pwd':''}, //보낼 데이터
+            success: function(response) {
+                if (login = 'True') {
+                    $('.nav-bar__list').html('<li><a href="/index" class="logut_btn" onclick ="logOut()">LOGOUT</a></li>'); 
+                    }
+                }
+            }
+        )};
+</script>
 
 
     <!-- 로그인 로그아웃 스위치 -->

@@ -9,12 +9,10 @@
   align-items: center;
   height: 100%;
   background-size: cover;
-  position: relative;
 }
 
 .regions-container {
   padding-top: 100px;
-  position: absolute;
   width: 60%;
   height: 100%;
   top: 0px;
@@ -46,6 +44,9 @@
 }
 
 .regions-cover__box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 50px 0px 50px 0px;
 }
 
@@ -102,6 +103,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 200px;
+  height: 200px;
 }
 
 /*북도/남도 나누기 -- show1:북도 /show2:남도 / hide: 원도*/

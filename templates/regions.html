@@ -43,7 +43,6 @@
         width: 100vw;
         overflow-x: hidden;
         -ms-overflow-style: none;
-
     }
 </style>
 
@@ -74,13 +73,22 @@
             <div class="regions-cover">
                 <div class="regions-cover__box">
                     <div class="regions-cover__row">
+<<<<<<< Updated upstream
                         <a href="/cat_list" onclick="loadCadCard('seoul')">
+=======
+                        <div onclick="loadCadCard('서울');movePage();">
+>>>>>>> Stashed changes
                             <div class="regions-cover__row-circle">
                                 <img src="https://i.natgeofe.com/n/3861de2a-04e6-45fd-aec8-02e7809f9d4e/02-cat-training-NationalGeographic_1484324_square.jpg">
                                 <span class="original-span">서울</span>
                             </div>
+<<<<<<< Updated upstream
                         </a>
                         <a href="/cat_list" onclick="loadCadCard('busan')">
+=======
+                        </div>
+                        <a href="/cat_list" onclick="loadCadCard('부산광역시')">
+>>>>>>> Stashed changes
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2013/05/30/18/21/cat-114782_960_720.jpg">
                                 <span class="original-span">부산</span>
@@ -139,10 +147,11 @@
                         </a>
 
                         <!-- 충청,전라,경상 - 북/남으로 구분효과 있는 지역 -->
-                        <a href="#">
+
                             <div class="regions-cover__row-circle" id="circle1">
                                 <img src="https://cdn.pixabay.com/photo/2016/09/07/22/38/cat-1652822_960_720.jpg">
                                 <span id="circle-section__span-hide1" class="original-span">충청도</span>
+<<<<<<< Updated upstream
                                 <div id="circle-section1">
                                     <a href="/cat_list" onclick="loadCadCard('ccbd')">
                                     <span class="circle-section__span-show1">충청북도</span>
@@ -151,10 +160,19 @@
                                     <a href="/cat_list" onclick="loadCadCard('ccnd')">
                                     <span class="circle-section__span-show2">충청남도</span>
                                 </a>
+=======
+                                <div id="circle-section1"> 
+                                    <a href="/cat_list" onclick="loadCadCard('충청북도')"></a>
+                                        <span class="circle-section__span-show1">충청북도</span>
+                                    </a>
+                                    <hr class="circle-section__divider">
+                                    <a href="/cat_list" onclick="loadCadCard('충청남도')">
+                                        <span class="circle-section__span-show2">충청남도</span>
+                                    </a>
+>>>>>>> Stashed changes
                                 </div>
                             </div>
-                        </a>
-                        <a href="#">
+
                             <div class="regions-cover__row-circle" id="circle2">
                                 <img src="https://cdn.pixabay.com/photo/2021/07/25/20/47/cat-6492741_960_720.jpg">
                                 <span id="circle-section__span-hide2" class="original-span">전라도</span>
@@ -162,16 +180,23 @@
                                     <a href="/cat_list" onclick="loadCadCard('jlbd')">
                                         <span class="circle-section__span-show1" >전라북도</span>
                                     </a>
+
                                     <hr class="circle-section__divider">
+<<<<<<< Updated upstream
                                     <a href="/cat_list" onclick="loadCadCard('jlnd')">
+=======
+
+                                    <a href="/cat_list" onclick="loadCadCard('전라남도')">
+>>>>>>> Stashed changes
                                         <span class="circle-section__span-show2">전라남도</span>
                                     </a>
                                 </div>
                             </div>
-                        </a>
                     </div>
+                </div>
+
                     <div class="regions-cover__row">
-                        <a href="#">
+
                             <div class="regions-cover__row-circle" id="circle3">
                                 <img src="https://cdn.pixabay.com/photo/2012/10/12/17/12/cat-61079_960_720.jpg">
                                 <span id="circle-section__span-hide3" class="original-span">경상도</span>
@@ -179,21 +204,33 @@
                                     <a href="/cat_list" onclick="loadCadCard('ksbd')">
                                         <span class="circle-section__span-show1" >경상북도</span>
                                     </a>
+
                                     <hr class="circle-section__divider">
+<<<<<<< Updated upstream
                                     <a href="/cat_list" onclick="loadCadCard('ksnd')">
+=======
+
+                                    <a href="/cat_list" onclick="loadCadCard('경상남도')">
+>>>>>>> Stashed changes
                                         <span class="circle-section__span-show2" >경상남도</span>
                                     </a>
                                     
                                 </div>
                             </div>
+<<<<<<< Updated upstream
                         </a>
                         <a href="/cat_list" onclick="loadCadCard('jeju')">
+=======
+
+                        <a href="/cat_list" onclick="loadCadCard('제주특별자치도')">
+>>>>>>> Stashed changes
                             <div class="regions-cover__row-circle">
                                 <img src="https://cdn.pixabay.com/photo/2017/03/29/09/59/cat-2184682_960_720.jpg">
                                 <span class="original-span">제주도</span>
                             </div>
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -238,10 +275,8 @@
             $("#circle-section3").hide();
         });
 
-            //주석처리된 것 : 연습중//
-        /*
 
-        //도 이름을 클릭하면 시 이름이 나타나게//
+        /*도 이름을 클릭하면 시 이름이 나타나게//
         $(".original-span").mouseover(function() {
             $("div:[id*='section'").each(function (i) { //each(function (i) ????)
                 if ($(this).css("display") == 'none') {
@@ -251,6 +286,7 @@
             });
             $(this).next().slideDown('fast');
     });*/
+    
     </script>
 
 </body>

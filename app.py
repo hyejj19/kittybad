@@ -1,9 +1,8 @@
 import re
-from flask import Flask, render_template, request, url_for, redirect, session
-import pyrebase
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify
 import json
 import datetime
-from xml.sax.saxutils import escape
+import pyrebase
 
 with open(r"auth/firebase.json") as f:  # 파이어베이스 주소
     config = json.load(f)
@@ -172,6 +171,7 @@ def signup_done():
 #  api 정보
 @app.route('/cat_card_sido', methods=['GET', 'POST'])
 def cat_card_sido():
+<<<<<<< Updated upstream
     api_data('경기도')
     return redirect(
         url_for('/cat_list.html'),
@@ -188,6 +188,26 @@ def cat_card_sido():
         all_care_tel=all_care_tel,  # 보호소 연락처
         all_care_addr=all_care_addr  # 보호소 주소
     )
+=======
+    sido = request.args.get('sido_give')
+    sido = str(sido)
+    api_data(sido)
+    print(sido, all_cat_id[0])
+    return jsonify({
+        "all_cat_id": all_cat_id,  # 유기번호
+        "all_sido": all_sido,  # '지역'
+        "all_notice_day": all_notice_day,  # 공고일
+        "all_notice_num": all_notice_num,  # 공고 번호
+        "all_cat_img": all_cat_img,  # 고양이사진 주소
+        "all_cat_feature": all_cat_feature,  # 특징
+        "all_cat_colo": all_cat_color,  # 고양이 색
+        "all_cat_weigth": all_cat_weigth,  # 몸무게
+        "all_cat_gender": all_cat_gender,  # 성별
+        "all_care_name": all_care_name,  # 보호소 명
+        "all_care_tel": all_care_tel,  # 보호소 연락처
+        "all_care_addr": all_care_addr,  # 보호소 주소
+    })
+>>>>>>> Stashed changes
 
 
 @app.route('/cat_list', methods=['GET', 'POST'])

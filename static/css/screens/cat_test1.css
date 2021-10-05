@@ -3,11 +3,11 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 .test {
-  max-width: 600px;
+  max-width: 800px;
   height: 100vh;
 }
 
@@ -15,18 +15,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
+  font-size: 45px;
   line-height: 1.5;
-  padding-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .question_box .number {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 }
 
 .answer {
-  font-size: 17px;
-  line-height: 1.3;
+  font-family: "SEBANG_Gothic_Regular";
+  font-size: 35px;
+  line-height: 1.5;
   padding-bottom: 30px;
 }
 
