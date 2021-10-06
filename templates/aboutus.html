@@ -38,10 +38,10 @@
 /* about us - logo.css */
     body {
         background: linear-gradient(var(--bg-color),white);
-        height: 120vh;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
         font-family: "SEBANG_Gothic_Regular";
-        letter-spacing: 5px;
+        display: flex;
     }
     
     menu-bar {
@@ -54,7 +54,7 @@
     }
 
     .about-name-box {
-        margin: 30px 0px 0px 50px;
+        margin: 3% 0px 0px 50px;
         display: inline-block;
         justify-content: center;
     }
@@ -75,31 +75,34 @@
         text-align: center;
     }
 
-/* about us - team members */
-    
-    .all_container {
-        display: flex;
+    .about-name-wrap2 p {
+        margin-top: 10px;
     }
 
+/* about us - team members */
+    
     .aboutus {
         font-size: 40px;
         color: white;
         text-shadow: 2px 2px 2px gray;
         text-align: left;
-        margin: 0px 0px 80px 40px; 
-        padding-top: 20px;
+        display: block;
+        margin-bottom: 100px;
+        margin-left: 40px;
     }
     
     .aboutus-cards {
-        width: auto;
+        width: 2000px;
         height: 400px;
         display: flex;
-        margin: 30px 60px 0px 10px;
-        justify-content: space-around;        
+        margin: 15% 60px 0px 10px;
+        justify-content: space-around;
+        
     }
 
     .aboutus-card-body {
         height: 50px;
+        padding: 0.5rem;
         text-align: center;
         font-weight: bold;
     }
@@ -113,30 +116,26 @@
 </style>
 
 <body>
-    <!-- Nav-bar --> 
-    <nav class="nav-bar"> 
-        <div class="nav-bar-box"> 
-            <ul class="nav-bar__list"> 
-                <li><a href="/regions">HOME</a></li> 
-                <li><a href="/about">ABOUT</a></li> 
-                <li><a href="/login">LOGIN</a></li> 
-
-            </ul> <ul class="nav-bar__list-2"> 
-                <li><a href="#">나의 고양이 취향은?</a></li> 
-            </ul> 
-        </div> 
+    <!-- Nav-bar -->
+    <nav class="nav-bar">
+        <div class="nav-bar-box">
+            <ul class="nav-bar__list">
+                <li><a href="/regions">HOME</a></li>
+                <li><a href="/aboutus">ABOUT</a></li>
+                <li><a href="/login">LOGIN</a></li>
+            </ul>
+            <ul class="nav-bar__list-2">
+                <li><a href="/cat_test">나의 고양이 취향은?</a></li>
+            </ul>
+        </div>
     </nav>
 
-
-    <div class="aboutus">about us</div>
-
-    <div class="all_container">
     <div class="about-name-box">
         <div class="about-name-wrap">
-            
+            <div class="aboutus">about us</div>
             <p style="font-size: 18px;">당신의 가족이 될 고양이가 기다리고 있어요!</p>
             <p style="font-size: 18px;">사지말고 입양하세요.</p>
-            <img class="about-name" src="/static/css/cat_pic/logo.png" alt="로고입니다.">
+            <img class="about-name" src="/static/logo.png" alt="로고입니다.">
         </div>
         <div class="about-name-wrap2">
             <p>지역별 입양 가능한 유기묘 현황,</p>
@@ -146,7 +145,8 @@
         </div>
     </div>
 
-    
+
+
     <div class="aboutus-cards">
         <div class="aboutus-card">
             <img class="aboutus-card-image" 
@@ -198,10 +198,6 @@
             </img>
         </div>
     </div>
-</div>
-
-
-
 </body>
 
 </html>
