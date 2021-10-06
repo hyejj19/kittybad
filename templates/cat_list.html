@@ -34,7 +34,31 @@
 
     <!-- ajax.js import -->
     <script type="text/javascript" src="/static/js/ajax.js"></script>
+    <script>
+        $(window).ready(function(){
+            //alert('ready');
+            $.ajax({
+                type : "GET",
+                url: "/cat_list_info", //json 경로
+                //dataType: "json",
+                data : {},
+                success: function(data){
+                    for(let i = 0; i < data.length; i++) {
+                        
+                        let cat_number = data.유기번호;
 
+                        let catCard = `<div id= "${cat_number}" " class="cat-card" style="width: 18rem;" onclick="location.href='#'">
+                                            <img class="card-img-top" src="${cat_imgurl}" alt="Card image cap">
+                                            <p class="card-text">${cat_number}</p>
+                                        </div>`
+                    }
+                }
+            })
+        });
+        
+    
+    </script>
+    
 
 
 </head>
