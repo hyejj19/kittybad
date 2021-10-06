@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데려갈꼬냥? | 지역별 고양이</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous">
+
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS -->
+    <link href="/static/css/styles.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"> 
+    </script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- ajax.js import -->
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
+    <script>
+        //캣 카드 불러오기
+        $(window).ready(function(){ 
+            //alert('ready');
+            $.ajax({
+                type : "GET",
+                url: "/cat_list_info", //json 경로
+                //dataType: "json",
+                data : {},
+                success: function(data){
+                    //console.log(data['msg'])
+                    let cats = data['msg']
+                    //let num =0;
+                    //console.log(cats);
+                    for(let numbers in cats) {
+                        //num = num +1;
+                        //let cat_number = cats[i]['유기번호']
+                        //console.log(numbers,cats[numbers]);
+                        let cat_id = cats[numbers]['유기번호']; 
+                        let cat_img = cats[numbers]['고양이사진 주소'];
+                        let cat_number = cats[numbers]['공고 번호']; 
+                        let cat_color = cats[numbers]['고양이 색']; 
+                        let cat_sex = cats[numbers]['성별']; 
+                        let cat_kg = cats[numbers]['몸무게']; 
+                        let cat_note = cats[numbers]['특징']; 
+                        let cat_region = cats[numbers]['지역']; 
+                        let cat_center = cats[numbers]['보호소 명']; 
+                        let cat_address = cats[numbers]['보호소 주소']; 
+                        let cat_call = cats[numbers]['보호소 연락처'];
+
+                        //console.log(cat_number);
+                        let catCard = `<div id= "${cat_id}" " class="cat-card" style="width: 18rem;" onclick="giveId()">
+                            <img class="card-img-top" src="${cat_img}" alt="Card image cap">
+                            <p class="card-text">${cat_number}</p>
+                        </div>`
+
+                        $('.catcards-box').append(catCard);
+                    }
+                }})
+            });
+
+            $(function(){ //모달창 띄우기
+
+                 $(`${cat_id}`).click(function(){
+                             $(".modal").fadeIn('fast');  //cat-card click-> onModal
+                });
+                
+                     $(".modal__overlay").click(function(){
+                             $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
+                     });
+            });
+    
+    </script>
+    
+
+
+</head>
+
+<style>
+    body {
+        background: linear-gradient(var(--bg-color),white);
+        height: 200vh;
+        width: 100vw;
+      }
+</style>
+
+<body>
+
+    <!-- Nav-bar -->
+    <nav class="nav-bar">
+        <div class="nav-bar-box">
+            <ul class="nav-bar__list">
+                <li><a href="/regions">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/login">LOGIN</a></li>
+            </ul>
+            <ul class="nav-bar__list-2">
+                <li><a href="#">나의 고양이 취향은?</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Menu-bar -->
+    <div class="menu-bar">
+        <img src="/static/logo.png" alt="로고입니다." onclick="location.href='regions.html'">
+
+        <li class="menu-bar-box">
+            <span class="do-name">도 이름</span>
+        </li>
+    </div>
+    
+    <!-- 고양이 카드 박스 :: id를 공고번호로 주어서 카드 특정 -->
+    <div class="catcards-box">
+
+    </div>
+   
+    <!-- 모달창 -->
+    <div class="modal hidden">
+    <div class="modal__overlay"></div>
+        <div class="modal__content">
+            
+        </div>
+    </div>
+
+    
+    <script>
+
+       
+    </script>
+</body>
+
+</html>
