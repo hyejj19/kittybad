@@ -38,10 +38,10 @@
 /* about us - logo.css */
     body {
         background: linear-gradient(var(--bg-color),white);
-        height: 100vh;
-        width: 100vw;
+        height: 120vh;
+        width: 100%;
         font-family: "SEBANG_Gothic_Regular";
-        display: flex;
+        letter-spacing: 5px;
     }
     
     menu-bar {
@@ -54,7 +54,7 @@
     }
 
     .about-name-box {
-        margin: 50px 0px 0px 50px;
+        margin: 30px 0px 0px 50px;
         display: inline-block;
         justify-content: center;
     }
@@ -77,28 +77,29 @@
 
 /* about us - team members */
     
+    .all_container {
+        display: flex;
+    }
+
     .aboutus {
         font-size: 40px;
         color: white;
         text-shadow: 2px 2px 2px gray;
         text-align: left;
-        display: block;
-        margin-bottom: 140px;
-        margin-left: 40px;
+        margin: 0px 0px 80px 40px; 
+        padding-top: 20px;
     }
     
     .aboutus-cards {
-        width: 2000px;
+        width: auto;
         height: 400px;
         display: flex;
-        margin: 220px 60px 0px 10px;
-        justify-content: space-around;
-        
+        margin: 30px 60px 0px 10px;
+        justify-content: space-around;        
     }
 
     .aboutus-card-body {
         height: 50px;
-        padding: 0.5rem;
         text-align: center;
         font-weight: bold;
     }
@@ -126,12 +127,16 @@
         </div> 
     </nav>
 
+
+    <div class="aboutus">about us</div>
+
+    <div class="all_container">
     <div class="about-name-box">
         <div class="about-name-wrap">
-            <div class="aboutus">about us</div>
+            
             <p style="font-size: 18px;">당신의 가족이 될 고양이가 기다리고 있어요!</p>
             <p style="font-size: 18px;">사지말고 입양하세요.</p>
-            <img class="about-name" src="/static/logo.png" alt="로고입니다.">
+            <img class="about-name" src="/static/css/cat_pic/logo.png" alt="로고입니다.">
         </div>
         <div class="about-name-wrap2">
             <p>지역별 입양 가능한 유기묘 현황,</p>
@@ -141,16 +146,8 @@
         </div>
     </div>
 
-   
     
-    <div>
-    
-    </div>
-
-
     <div class="aboutus-cards">
-
-
         <div class="aboutus-card">
             <img class="aboutus-card-image" 
                 src="/static/css/cat_pic/고등어냥.png" 
@@ -200,10 +197,8 @@
             </div>
             </img>
         </div>
-
-
-
     </div>
+</div>
 
 
 

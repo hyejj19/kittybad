@@ -112,6 +112,7 @@
   font-size: 20px;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px rgb(53, 53, 53);
+  transform: translateX(-50%);
 }
 
 /*circle 내의 divider*/
@@ -131,6 +132,7 @@
   font-size: 20px;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px rgb(53, 53, 53);
+  transform: translateX(-50%);
 }
 
 /*마우스를 올리면 사라질 충청,전라,경상도*/
