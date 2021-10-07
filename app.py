@@ -84,7 +84,7 @@ def move_regions():
 @app.route("/login")
 def login():
     if "uid" in session:  # 세션안에 유저 아이디가 있을 경우  (= 로그인이 유지가 된 상태)
-        return render_template("index.html", login=True)
+        return render_template("index.html")
         # 로그인 페이지로 접속해도 강제적으로 대문페이지로 보냄
 
     else:  # 세션안에 유저 아이디가 없는 경우 (로그인이 안되어있는 상태)
@@ -92,7 +92,7 @@ def login():
 
 
 # 로그인 기능
-@app.route("/login_done", methods=['POST'])
+@app.route("/login_done", methods=['POST', 'GET'])
 def login_done():
     uid = request.form['uid']  # login.html(로그인 페이지)에서 받아온 아이디 값
     pwd = request.form['pwd']  # login.html(로그인 페이지)에서 받아온 비밀번호 값
@@ -117,12 +117,12 @@ def login_done():
         except:  # 에러 발생시 작동    # 로그인 페이지에서 입력한 id 값이 데이터베이스에 없을 경우 에러가 남.
             return redirect(url_for('login'))  # 로그인 페이지에 계속 머무르게 함
 
-    # 아이디 중복확인
 
-
-@app.route("/id_duplic", methods=['POST'])
-def id_duplic():
-    pass
+# 로그인 유지상태 확인
+@app.route('/log_maintain')
+def log_maintain():
+    if "uid" in session:
+        return jsonify({'login': 'True'})
 
 
 # 로그아웃
@@ -188,29 +188,9 @@ def cat_list_info():
 def cat_list():
     return render_template('/cat_list.html')
 
-
-# 카드 모달  아이디 정보
-@app.route('/cat_list_modal_r', methods=['GET'])
-def cat_list_modal_r():
-    global modal_cat_id
-    modal_cat_id = request.args.get('id_give')
-    return modal_cat_id
-
-# 카드 모달 데이터 전달
-
-
-@app.route('/cat_list_modal_g', methods=['GET'])
-def cat_list_modal_g():
-    modal_info = db.child("고양이").child(sido).child(
-        '유기번호').child(modal_cat_id).get().val()
-    return jsonify({'msg': dict(modal_info)})
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
-
-
 # Cat Test ~ 1   Result1~7 페이지
+
+
 @app.route("/cat_test")
 def cat_test():
     return render_template("cat_test.html")
@@ -254,3 +234,12 @@ def result6():
 @app.route("/result7")
 def result7():
     return render_template("result7.html")
+
+
+@app.route('/aboutus')
+def aboutus():
+    return render_template('aboutus.html')
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)

@@ -47,6 +47,26 @@
     }
 </style>
 
+<script>
+    
+    $(document).ready(function(){
+        $("#login_out_n").hide();
+
+        $.ajax({
+            type : "GET",
+            url: "/log_maintain", 
+            data : {},
+            success: function(data){
+                if (data['login'] == 'True'){
+                    $("#login_in_n").hide();
+                    $("#login_out_n").show();
+                }
+            }
+        })
+    });
+
+</script>
+
 <body>
 
     <!-- Nav-bar -->
@@ -54,8 +74,10 @@
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
                 <li><a href="/regions">HOME</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/login">LOGIN</a></li>
+                <li><a href="/aboutus">ABOUT</a></li>
+                <li><a id="login_in_n" href="/login">LOGIN</a></li>
+                <li><a id="login_out_n" href="{{url_for('login_out')}}" onclick = "change">LOGOUT</a></li>
+
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="/cat_test">나의 고양이 취향은?</a></li>

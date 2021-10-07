@@ -8,12 +8,36 @@
     <title>데려갈꼬냥?</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS -->
     <link href="/static/css/styles.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- ajax.js import -->
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
     
 
 </head>
+
+<script>
+    
+    $(document).ready(function(){
+        $("#login_out_n").hide();
+
+        $.ajax({
+            type : "GET",
+            url: "/log_maintain", 
+            data : {},
+            success: function(data){
+                if (data['login'] == 'True'){
+                    $("#login_in_n").hide();
+                    $("#login_out_n").show();
+                }
+            }
+        })
+    });
+
+</script>
 
 <body>
 
@@ -22,8 +46,10 @@
         <div class="nav-bar-box">
             <ul class="nav-bar__list">
                 <li><a href="/regions">HOME</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/login">LOGIN</a></li>
+                <li><a href="/aboutus">ABOUT</a></li>
+                <li><a id="login_in_n" href="/login">LOGIN</a></li>
+                <li><a id="login_out_n" href="{{url_for('login_out')}}" onclick = "change">LOGOUT</a></li>
+
             </ul>
             <ul class="nav-bar__list-2">
                 <li><a href="/cat_test">나의 고양이 취향은?</a></li>
@@ -34,7 +60,6 @@
     <!-- 배경 및 내용 -->
     <div class="container">
         <img class="masthead" src="/static/cat1.gif">
-        </img>
         <div class="hero">
             <div class="logo-box">
                 <a href="/regions"><img class="logo"></a>
@@ -43,7 +68,8 @@
             <p>당신의 가족이 될 고양이가 기다리고 있어요!</p>
             <p>집사가 되어주세요.</p>
             <button type="button" onClick="location.href='/regions'">Be Our Family!</button>
-            <a href="{{url_for('login_out')}}">로그아웃</a>
+
+        
         </div>
         <div class="cheat">
         </div>

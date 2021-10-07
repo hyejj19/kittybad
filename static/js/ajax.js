@@ -7,6 +7,18 @@ function loadCadCard(sido){ // 시도 이름 전달
         success: function(){ //
         }}
     )};
+
+    function change(){
+        $.ajax({
+            type : "GET",
+            url: "/login_out", 
+            data : {},
+            success: function(data){
+                $("#login_in_n").show();
+                $("#login_out_n").hide();
+            }
+        })
+    }
  
  // $(document).ready(function () {  //페이지가 모두 로드되면 실행 *regions에서 특정 시,도를 선택해 cat-list로 넘어오면, 해당하는 데이터만 보이도록.
     //     loadMenuBar();
