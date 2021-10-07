@@ -173,7 +173,7 @@
         function giveId(cat_id){ // 시도 이름 전달 : cat_id(유기번)
             $.ajax({
                 type : "GET",
-                url: "/cat_modal_info", //json 경로
+                url: "/cat_list_modal", //json 경로
                 data : {id_give: cat_id}, //도시이름
                 success: function(){ 
                     showModal();
@@ -190,7 +190,7 @@
             //alert($(this).val());
             $.ajax({
                 type : "GET",
-                url : "/cat_modal_info", //json 경로
+                url : "/cat_list_modal", //json 경로
                 data : {},
                 success: function(data){
                     //console.log(data['msg'])
