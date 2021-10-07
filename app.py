@@ -20,54 +20,6 @@ app = Flask(__name__)
 app.secret_key = "asfasdfsdagdfhsa"  # 시크릿 키
 
 
-# # api data 함수
-# def api_data(sido):
-#     global all_cat_id
-#     global all_sido
-#     global all_notice_day
-#     global all_notice_num
-#     global all_cat_img
-#     global all_cat_feature
-#     global all_cat_color
-#     global all_cat_weigth
-#     global all_cat_gender
-#     global all_care_name
-#     global all_care_tel
-#     global all_care_addr
-#     all_cat_id = []  # '유기번호'
-#     all_sido = []  # '지역'
-#     all_notice_day = []  # 공고일
-#     all_notice_num = []  # 공고 번호
-#     all_cat_img = []  # 고양이사진 주소
-#     all_cat_feature = []  # 특징
-#     all_cat_color = []  # 고양이 색
-#     all_cat_weigth = []  # 몸무게
-#     all_cat_gender = []  # 성별
-#     all_care_name = []  # 보호소 명
-#     all_care_tel = []  # 보호소 연락처
-#     all_care_addr = []  # 보호소 주소
-
-#     sido_cats_info = db.child("고양이").child(sido).get().val()
-#     # print(sido_cats_info)
-
-#     for sido_c_id in sido_cats_info:  # sido_c_id 변수는 sido에 해당하는 모든 고양이 유기번호를 뜻함
-#         sido_cat = db.child("고양이").child(sido).child(sido_c_id).get().val()  # 한마리 개체
-#         # print(sido_c_id)
-
-#         all_cat_id.append(sido_cat['유기번호'])
-#         all_sido.append(sido_cat['지역'])
-#         all_notice_day.append(sido_cat['공고일'])
-#         all_notice_num.append(sido_cat['공고 번호'])
-#         all_cat_img.append(sido_cat['고양이사진 주소'])
-#         all_cat_feature.append(sido_cat['특징'])
-#         all_cat_color.append(sido_cat['고양이 색'])
-#         all_cat_weigth.append(sido_cat['몸무게'])
-#         all_cat_gender.append(sido_cat['성별'])
-#         all_care_name.append(sido_cat['보호소 명'])
-#         all_care_tel.append(sido_cat['보호소 연락처'])
-#         all_care_addr.append(sido_cat['보호소 주소'])
-
-
 # 대문 페이지
 @app.route("/", methods=['POST', 'GET'])
 def index():
@@ -257,6 +209,30 @@ def result7():
 @app.route('/aboutus')
 def aboutus():
     return render_template('aboutus.html')
+
+
+# 캣 테스트 결과 받아오기
+@app.route('/cat_result_data_r')
+def cat_result_data_r():
+    result_cat = request.args.get('result_cat')
+    num = db.child('cat_test_통계').child(result_cat).get().val() + 1
+    db.child('cat_test_통계').child(result_cat).set(num)
+    return jsonify({'num': num})
+
+
+# 캣 테스트 결과 집계 주기
+@app.route('/cat_result_data_g')
+def cat_result_data_g():
+    test_info = {
+        "white_cat": db.child('cat_test_통계').child('흰색냥').get().val(),
+        "black_cat": db.child('cat_test_통계').child('깜냥').get().val(),
+        "gray_cat": db.child('cat_test_통계').child('회색냥').get().val(),
+        "tuxedo_cat": db.child('cat_test_통계').child('턱시도냥').get().val(),
+        "fish_cat": db.child('cat_test_통계').child('고등어냥').get().val(),
+        "cheeze_cat": db.child('cat_test_통계').child('치즈냥').get().val(),
+        "three_color_cat": db.child('cat_test_통계').child('삼색냥').get().val()
+    }
+    return jsonify({'test_info': test_info})
 
 
 if __name__ == "__main__":

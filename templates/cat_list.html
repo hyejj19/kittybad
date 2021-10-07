@@ -44,25 +44,13 @@
                 //dataType: "json",
                 data : {},
                 success: function(data){
-                    //console.log(data['msg'])
+                    
                     let cats = data['msg']
-                    //let num =0;
-                    //console.log(cats);
+
                     for(let numbers in cats) {
-                        //num = num +1;
-                        //let cat_number = cats[i]['유기번호']
-                        //console.log(numbers,cats[numbers]);
                         let cat_id = cats[numbers]['유기번호']; 
                         let cat_img = cats[numbers]['고양이사진 주소'];
                         let cat_number = cats[numbers]['공고 번호']; 
-                        /*let cat_color = cats[numbers]['고양이 색']; 
-                        let cat_sex = cats[numbers]['성별']; 
-                        let cat_kg = cats[numbers]['몸무게']; 
-                        let cat_note = cats[numbers]['특징']; 
-                        let cat_region = cats[numbers]['지역']; 
-                        let cat_center = cats[numbers]['보호소 명']; 
-                        let cat_address = cats[numbers]['보호소 주소']; 
-                        let cat_call = cats[numbers]['보호소 연락처'];*/
 
                         //console.log(cat_number);
                         let catCard = `<div id= "${cat_id}" " class="cat-card" style="width: 18rem;" onclick="giveId(${cat_id})">
@@ -70,51 +58,10 @@
                             <p class="card-text">${cat_number}</p>
                         </div>`
 
-                        /*let modalData = `<img class="modal-img" src="${cat_img}" alt="고양이 이미지">
-                        <img class="modal-logo" src="/static/logo.png" alt="데려갈꼬냥?" >
-                                <ul>
-                                    <li>
-                                        <span class="modal-title">공고번호</span><span class="modal-text">${cat_number}</span>
-                                    </li>
-                                    <li>
-                                        <span class="modal-title">색상 / 성별</span><span class="modal-text">${cat_color}/${cat_sex}</span>
-                                        <br>
-                                        <span class="modal-title">체중</span><span class="modal-text">${cat_kg}</span>
-                                        <br>
-                                        <span class="modal-title">특징</span><span class="modal-text">${cat_note}</span>
-                                        <br>
-                                    </li>
-                                    <li>
-                                        <span class="modal-title">관할기관</span><span class="modal-text">${cat_region}</span>
-                                        <br>
-                                        <span class="modal-title">보호센터</span><span class="modal-text">${cat_center}</span>
-                                        <br>
-                                        <span class="modal-title">주소</span><span class="modal-text">${cat_address}</span>
-                                        <br>
-                                        <span class="modal-title">연락처</span><span class="modal-text">${cat_call}</span>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>`*/
-
                         $('.catcards-box').append(catCard);
-                        //$('.modal__content').append(modalData);
                     }
                 }})
             });
-
-        /*function clickModal(){ //모달창 띄우기
-
-                $(${cat_id}).click(function(){
-                    $(".modal").fadeIn('fast');  //cat-card click-> onModal
-                });
-            
-                $(".modal__overlay").click(function(){
-                    $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
-                });
-        };*/
-
-        //giveId(${cat_id})
     
     </script>
 

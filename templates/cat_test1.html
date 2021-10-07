@@ -67,18 +67,73 @@
                 // if , else if 문으로 스코어 값에 맞는 페이지로 이동
                 if (5<=score && score<=12){
                     window.location.href = "/result1";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '삼색냥'},
+                        success: function(data){
+                        }
+                    })
                 } else if (13<=score && score<=18) {
                     window.location.href = "/result2";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '흰색냥'},
+                        success: function(data){
+                    
+                        }
+                    })
                 } else if (19<=score && score<=24) {
                     window.location.href = "/result3";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '깜냥'},
+                        success: function(data){
+
+                        }
+                    })
                 } else if (25<=score && score<=30) {
                     window.location.href = "/result4";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '회색냥'},
+                        success: function(data){
+
+                        }
+                    })
                 } else if (31<=score && score<=36) {
                     window.location.href = "/result5";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '턱시도냥'},
+                        success: function(data){
+
+                        }
+                    })
                 } else if (37<=score && score<=42) {
                     window.location.href = "/result6";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '고등어냥'},
+                        success: function(data){
+
+                        }
+                    })
                 } else if (43<=score && score<=50) {
                     window.location.href = "/result7";
+                    $.ajax({
+                        type : "GET",
+                        url: "/cat_result_data_r", 
+                        data : {result_cat : '치즈냥'},
+                        success: function(data){
+
+                        }
+                    })
                 } 
             }
 

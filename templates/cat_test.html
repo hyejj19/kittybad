@@ -8,6 +8,8 @@
     <link href="/static/css/styles.css" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
     <title>나와 맞는 고양이 찾기</title>
 
 
@@ -27,6 +29,36 @@
         font-family: "SEBANG_Gothic_Bold";
     }
 </style>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type : "GET",
+            url: "/cat_result_data_g", 
+            data : {},
+            success: function(data){
+                let white_cat = data['test_info']["white_cat"];
+                let black_cat = data['test_info']["black_cat"];
+                let gray_cat = data['test_info']["gray_cat"];
+                let tuxedo_cat = data['test_info']["tuxedo_cat"];
+                let fish_cat = data['test_info']["fish_cat"];
+                let cheeze_cat = data['test_info']["cheeze_cat"];
+                let three_color_cat = data['test_info']["three_color_cat"];
+
+                let temp_html = `<li>삼색냥 : ${three_color_cat}명</li>
+                <li>흰색냥 : ${white_cat}명</li>
+                <li>깜냥 : ${black_cat}명</li>
+                <li>회색냥 : ${gray_cat}명</li>
+                <li>턱시도냥 : ${tuxedo_cat}명</li>
+                <li>고등어냥 : ${fish_cat}명</li>
+                <li>치즈냥 : ${three_color_cat}명</li>`
+
+                $('#result_cat').append(temp_html)
+            }
+        })
+    });
+</script>
+
+
 
 
 <body>   
@@ -43,12 +75,12 @@
                 <h1>나와 맞는 고양이는?</h1>
                 <div class="type">
                     <ul class = "type_list">
-                        <li>삼색이</li>
-                        <li>흰둥이</li>
-                        <li>검둥이</li>
+                        <li>삼색냥</li>
+                        <li>흰색냥</li>
+                        <li>깜냥</li>
                         <li>회색냥</li>
-                        <li>턱시도</li>
-                        <li>고등어</li>
+                        <li>턱시도냥</li>
+                        <li>고등어냥</li>
                         <li>치즈냥</li>
                     </ul>
                 </div>
@@ -66,14 +98,7 @@
             <div class="result_data">
                 <div class="data_wrap">
                     <h3>선택된 고양이</h3>
-                    <ul>
-                        <li>삼색이 : 1명</li>
-                        <li>흰둥이 : 0명</li>
-                        <li>검둥이 : 1명</li>
-                        <li>회색냥 : 0명</li>
-                        <li>턱시도 : 1명</li>
-                        <li>고등어 : 1명</li>
-                        <li>치즈냥 : 1명</li>
+                    <ul id= "result_cat">
                     </ul>
                 </div>
             </div>
