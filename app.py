@@ -188,6 +188,24 @@ def cat_list_info():
 def cat_list():
     return render_template('/cat_list.html')
 
+# 카드 모달  아이디 정보
+
+
+@app.route('/cat_list_modal_r', methods=['GET'])
+def cat_list_modal_r():
+    global modal_cat_id
+    modal_cat_id = request.args.get('id_give')
+    return modal_cat_id
+
+# 카드 모달 데이터 전달
+
+
+@app.route('/cat_list_modal_g', methods=['GET'])
+def cat_list_modal_g():
+    modal_info = db.child("고양이").child(sido).child(
+        '유기번호').child(modal_cat_id).get().val()
+    return jsonify({'msg': dict(modal_info)})
+
 # Cat Test ~ 1   Result1~7 페이지
 
 
