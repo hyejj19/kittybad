@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+
+    <title>고등어냥</title>
+
+    <style>
+        body {
+            background-color: #faf1be;
+            color: rgb(0, 0, 0);
+            font-family: "SEBANG_Gothic_Regular";
+            margin-top: 50px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .title h3 {
+            font-size: 17px;
+            padding-bottom: 15px;
+        }
+
+        .title h1 {
+            font-weight: bold;
+            font-size: 50px;
+            margin-top: 10px;
+            font-family: "SEBANG_Gothic_Bold";
+        }
+
+        .result_explain{
+            margin-top: 50px;
+        }
+
+        .result_explain h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-family: "SEBANG_Gothic_Bold";
+        }
+
+        .result_explain li {
+            text-align: left;
+            line-height: 3;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+            margin-left: 200px;
+        }
+
+        button {
+        position: relative;
+        left: 40%;
+        width: 150px;
+        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 50px;
+        border-style: none;
+        border-radius: 10px;
+        font-size: 13px;
+        background-color: #7f47dd;
+        color: #fff;
+        cursor: pointer;
+        font-family: "SEBANG_Gothic_Bold";
+        }
+
+        button:hover {
+        color: #7f47dd;
+        background-color: #fff;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <section id=main>
+        <div class="result">
+            <div class="title">
+                <h3>야생의 고양이를 선택한 당신은?</h3>
+                <h1>조상을 빼닮은, 고등어냥</h1>
+            </div>
+            <div class="result_img">
+                <img src="/static/css/cat_pic/고등어냥.png" alt="고등어냥">
+            </div>
+            <div class="result_explain">
+                <h3>나와 맞는 고양이는 고등어냥?</h3>
+                <ui>
+                    <li>성격: 야생성이 강함</li>
+                    <li>고등어무늬 고양이는 영역에 대한 의식이 강하고 운동신경이 뛰어나며 조심스러운 성격을 갖고 있다. </li>
+                    <li>한국 고양이 중에 가장 흔하게 볼 수 있는 색을 가진 개체이고 길에서 흔하게 만날 수 있다.</li>
+                    <li>갈색 베이스에 검은 줄무늬가 있는 고등어는 그들의 조상인 리비아 살쾡이 모습을 빼닮았는데, 이것은 야생성이 가장 강하게 남아있다는 것을 방증하기도 한다.</li>
+                </ui>
+            </div>
+            <button onclick="window.location.href='/' ">메인 페이지로 이동</button>
+        </div>
+    </section>
+</body>
+
+</html>

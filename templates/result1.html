@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+
+    <title>삼색이</title>
+
+    <style>
+        body {
+            background-color: #faf1be;
+            color: rgb(0, 0, 0);
+            
+            font-family: "SEBANG_Gothic_Regular";
+            margin-top: 50px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+
+        .title h3 {
+            font-size: 17px;
+            padding-bottom: 15px;
+        }
+
+        .title h1 {
+            font-weight: bold;
+            font-size: 50px;
+            margin-top: 10px;
+            font-family: "SEBANG_Gothic_Bold";
+        }
+
+        .result_explain{
+            margin-top: 50px;
+        }
+
+        .result_explain h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-family: "SEBANG_Gothic_Bold";
+        }
+
+        .result_explain li {
+            text-align: left;
+            line-height: 3;
+        }
+
+        img {
+            width: 300px;
+            height: 400px;
+            margin-left: 220px;
+        }
+
+        button {
+        position: relative;
+        left: 40%;
+        width: 150px;
+        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 50px;
+        border-style: none;
+        border-radius: 10px;
+        font-size: 13px;
+        background-color: #7f47dd;
+        color: #fff;
+        cursor: pointer;
+        font-family: "SEBANG_Gothic_Bold";
+        }
+
+        button:hover {
+        color: #7f47dd;
+        background-color: #fff;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <section id=main>
+        <div class="result">
+            <div class="title">
+                <h3>가장 전형적인 고양이를 선택한 당신은?</h3>
+                <h1>천상 고양이, 삼색이</h1>
+            </div>
+            <div class="result_img">
+                <img src="/static/css/cat_pic/삼색냥.png" alt="삼색냥" >
+            </div>
+            <div class="result_explain">
+                <h3>나와 맞는 고양이는 삼색이?</h3>
+                <ui>
+                    <li>성격: 가장 전형적인 고양이 성격</li>
+                    <li>여성적인 데다 자존심이 강하며 조금은 변덕스러운 이른바 츤데레 성향이 강하다. </li>
+                    <li>운동신경이 뛰어나고 호기심이 왕성하며 똑똑하다.</li>
+                    <li>유전적으로 수컷으로 태어날 확률이 매우 낮다. 대부분 암컷이며 수컷일 확률은 삼만 마리 중 한 마리 정도다.</li>
+                </ui>
+            </div>
+            <button onclick="window.location.href='/' ">메인 페이지로 이동</button>
+        </div>
+    </section>
+</body>
+
+</html>
