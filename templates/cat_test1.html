@@ -6,13 +6,133 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/static/css/styles.css" rel="stylesheet" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script type="text/javacript" src="js/cat_test1.js"></script>
+    <link href="/static/css/styles.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 
     <title>고양이 테스트</title>
-    
+
+
+    <script>
+        function test(){
+                // 변수 지정 : answer1~5 의 length  length=5
+                let answer1_length = document.getElementsByName("answer1").length;
+                let answer2_length = document.getElementsByName("answer2").length;
+                let answer3_length = document.getElementsByName("answer3").length;
+                let answer4_length = document.getElementsByName("answer4").length;
+                let answer5_length = document.getElementsByName("answer5").length;
+                let score = 0;
+                
+                // for문을 이용하여 answer1의 length를 반복시키고 if answer1의 i번째가 체크 되었으면 해당 answer1의 value 값을 스코어에 저장함
+                for(let i=0; i<answer1_length; i++){
+                    //Number 을 사용한 이유 : value 값이 string 이라서 사용함
+                    if(document.getElementsByName("answer1")[i].checked ==true){
+                        score += Number(document.getElementsByName("answer1")[i].value);
+                    }
+                }
+
+                for(let i=0; i<answer2_length; i++){
+                    if(document.getElementsByName("answer2")[i].checked ==true){
+                        score += Number(document.getElementsByName("answer2")[i].value);
+                    }
+                }
+
+                for(let i=0; i<answer3_length; i++){
+                    if(document.getElementsByName("answer3")[i].checked ==true){
+                        score += Number(document.getElementsByName("answer3")[i].value);
+                    }
+                }
+
+                for(let i=0; i<answer4_length; i++){
+                    if(document.getElementsByName("answer4")[i].checked ==true){
+                        score += Number(document.getElementsByName("answer4")[i].value);
+                    }
+                }
+
+                for(let i=0; i<answer5_length; i++){
+                    if(document.getElementsByName("answer5")[i].checked ==true){
+                        score += Number(document.getElementsByName("answer5")[i].value);
+                    }
+                }
+
+                // 2중 for문을 이용하여 구현하는 방법
+                // for(let j=1; j<=5; j++){
+                //     for(let i=0; i<answer1_length; i++){
+                //         if(document.getElementsByName(`answer${j}`)[i].checked ==true){              //문자열에 변수명을 넣고 싶을떄   ` ${변수명} `
+                //             score += Number(document.getElementsByName(`answer${j}`)[i].value);
+                //         }
+                //     }
+                // }
+                
+                // if , else if 문으로 스코어 값에 맞는 페이지로 이동
+                if (5<=score && score<=12){
+                    window.location.href = "/result1";
+                } else if (13<=score && score<=18) {
+                    window.location.href = "/result2";
+                } else if (19<=score && score<=24) {
+                    window.location.href = "/result3";
+                } else if (25<=score && score<=30) {
+                    window.location.href = "/result4";
+                } else if (31<=score && score<=36) {
+                    window.location.href = "/result5";
+                } else if (37<=score && score<=42) {
+                    window.location.href = "/result6";
+                } else if (43<=score && score<=50) {
+                    window.location.href = "/result7";
+                } 
+            }
+
+
+            // next, prev 버튼을 누르면 현재 보이는 vh만큼 이동  그리고  radio 선택을 하지 않으면 alret 창을 띠워준다.
+            function scrollUP() {
+                const vheight = $('.test').height();
+                console.log(vheight)
+                $('html, body').animate({
+                    scrollTop: ((Math.floor($(window).scrollTop() / vheight) - 1) * vheight)
+                    }, 500);
+                }
+
+            function scrollDown() {
+                const vheight = $(".test").height();
+                $('html, body').animate({
+                    scrollTop: ((Math.floor($(window).scrollTop() / vheight) + 1 ) * vheight)
+                }, 500);
+                }
+                $(function() {
+                    $('.next_btn').click(function(e) {
+                        console.log("next_button is clicked")
+                        let divs = $(this).parent().prev().children();
+                        let inputs = divs.find('input:checked');
+                        console.log(divs, inputs);
+                        if(inputs.length < 1) {
+                            alert('문항이 선택되지 않았습니다!');
+                            return false;
+                        }
+
+                        e.preventDefault();
+                        scrollDown();
+                        });
+                    
+                        $('.prev_btn').click(function(e){
+                            console.log("prev_button is clicked")
+                            e.preventDefault();
+                            scrollUP();
+                        });
+                    
+                        $('#form').submit(function(e){
+                            let radios = $('input[type=radio]:checked');
+                            if (radios.length < 5) {
+                                alert('문항이 선택되지 않았습니다!');
+                                return false;
+                            }
+                            return true;
+                        });
+
+                        $('html, body').animate({scrollTop: 0}, 500);
+                    });
+        
+    </script>
+
 </head>
 
 <style>
@@ -36,14 +156,14 @@
     html, body {
         height: 100%;
         width: 100%;
-        }
+    }
     
-        body {
-            background-color: #faf1be;
-            color: rgb(0, 0, 0);
-            overflow: hidden;
-            font-family: "SEBANG_Gothic_Bold";
-        }
+    body {
+        background-color: #faf1be;
+        color: rgb(0, 0, 0);
+        overflow:hidden;
+        font-family: "SEBANG_Gothic_Bold";
+    }
 </style>
 
 <body>
@@ -57,28 +177,28 @@
                     </div>
                     <div class="answer">
                         <div>
-                            <input id="1" type="radio" name="answer1"> 
-                            <label for="1">해외 여행!</label>
+                            <input id="a1" type="radio" name="answer1" value=1> 
+                            <label for="a1">해외 여행!</label>
                         </div>
                         <div>
-                            <input id="2" type="radio" name="answer2">
-                            <label for="2">국내이지만 신박한 곳으로?</label>
+                            <input id="a2" type="radio" name="answer1" value=3>
+                            <label for="a2">국내이지만 신박한 곳으로?</label>
                         </div>
                         <div>
-                            <input id="3" type="radio" name="answer3">
-                            <label for="3">가까운 곳으로 가자!</label>
+                            <input id="a3" type="radio" name="answer1" value=5>
+                            <label for="a3">가까운 곳으로 가자!</label>
                         </div>
                         <div>
-                            <input id="4" type="radio" name="answer4">
-                            <label for="4">그냥 친구들 따라가기</label>
+                            <input id="a4" type="radio" name="answer1" value=7>
+                            <label for="a4">그냥 친구들 따라가기</label>
                         </div>
                         <div>
-                            <input id="5" type="radio" name="answer5">
-                            <label for="5">난 집이 좋아!</label>
+                            <input id="a5" type="radio" name="answer1" value=10>
+                            <label for="a5">난 집이 좋아!</label>
                         </div>
                     </div>    
                     <div class="btn_wrap">
-                        <button class="next_btn">다 음</button>
+                        <button id="next_btn0" class="next_btn" >다 음</button>
                     </div>
                 </div>
                 <div class="test">
@@ -88,29 +208,29 @@
                     </div>
                     <div class="answer">
                         <div>
-                            <input id="1" type="radio" name="answer1">
-                            <label for="1">츄르 먹여보기</label>
+                            <input id="b1" type="radio" name="answer2" value=1>
+                            <label for="b1">츄르 먹여보기</label>
                         </div>
                         <div>
-                            <input id="2" type="radio" name="answer2">
-                            <label for="2">장난감으로 고양이 관심 끌기</label>
+                            <input id="b2" type="radio" name="answer2" value=3>
+                            <label for="b2">장난감으로 고양이 관심 끌기</label>
                         </div>
                         <div>
-                            <input id="3" type="radio" name="answer3">
-                            <label for="3">사진 찍기</label>
+                            <input id="b3" type="radio" name="answer2" value=5>
+                            <label for="b3">사진 찍기</label>
                         </div>
                         <div>
-                            <input id="4" type="radio" name="answer4">
-                            <label for="4">박스에 넣어보기</label>
+                            <input id="b4" type="radio" name="answer2" value=7>
+                            <label for="b4">박스에 넣어보기</label>
                         </div>
                         <div>
-                            <input id="5" type="radio" name="answer5">
-                            <label for="5">각자 할 일 하기</label>
+                            <input id="b5" type="radio" name="answer2" value=10>
+                            <label for="b5">각자 할 일 하기</label>
                         </div>
                     </div>    
                     <div class="btn_wrap btn_sort">
-                        <button class="prev_btn">이 전</button>
-                        <button class="next_btn">다 음</button>
+                        <button id="prev_btn1" class="prev_btn">이 전</button>
+                        <button id="next_btn1" class="next_btn">다 음</button>
                     </div>
                 </div>
                 <div class="test">
@@ -120,29 +240,29 @@
                     </div>
                     <div class="answer">
                         <div>
-                            <input id="1" type="radio" name="answer1">
-                            <label for="1">밝고 장난을 좋아함</label>
+                            <input id="c1" type="radio" name="answer3" value=1>
+                            <label for="c1">밝고 장난을 좋아함</label>
                         </div>
                         <div>
-                            <input id="2" type="radio" name="answer2">
-                            <label for="2">조용하지만 애교쟁이</label>
+                            <input id="c2" type="radio" name="answer3" value=3>
+                            <label for="c2">조용하지만 애교쟁이</label>
                         </div>
                         <div>
-                            <input id="3" type="radio" name="answer3">
-                            <label for="3">차분하고 섬세한</label>
+                            <input id="c3" type="radio" name="answer3" value=5>
+                            <label for="c3">차분하고 섬세한</label>
                         </div>
                         <div>
-                            <input id="4" type="radio" name="answer4">
-                            <label for="4">츤데레</label>
+                            <input id="c4" type="radio" name="answer3" value=7>
+                            <label for="c4">츤데레</label>
                         </div>
                         <div>
-                            <input id="5" type="radio" name="answer5">
-                            <label for="5">야생의 고양이</label>
+                            <input id="c5" type="radio" name="answer3" value=10>
+                            <label for="c5">야생의 고양이</label>
                         </div>
                     </div>    
                     <div class="btn_wrap btn_sort">
-                        <button class="prev_btn">이 전</button>
-                        <button class="next_btn">다 음</button>
+                        <button id="prev_btn2" class="prev_btn">이 전</button>
+                        <button id="next_btn2" class="next_btn">다 음</button>
                     </div>
                 </div>
                 <div class="test">
@@ -152,29 +272,29 @@
                     </div>
                     <div class="answer">
                         <div>
-                            <input id="1" type="radio" name="answer1">
-                            <label for="1">팀이나 동호회에 가서 하기</label>
+                            <input id="d1" type="radio" name="answer4" value=1>
+                            <label for="d1">팀이나 동호회에 가서 하기</label>
                         </div>
                         <div>
-                            <input id="2" type="radio" name="answer2">
-                            <label for="2">헬스장 가기</label>
+                            <input id="d2" type="radio" name="answer4" value=3>
+                            <label for="d2">헬스장 가기</label>
                         </div>
                         <div>
-                            <input id="3" type="radio" name="answer3">
-                            <label for="3">매일 동네 조깅</label>
+                            <input id="d3" type="radio" name="answer4" value=5>
+                            <label for="d3">매일 동네 조깅</label>
                         </div>
                         <div>
-                            <input id="4" type="radio" name="answer4">
-                            <label for="4">집에서 홈트레이닝</label>
+                            <input id="d4" type="radio" name="answer4" value=7>
+                            <label for="d4">집에서 홈트레이닝</label>
                         </div>
                         <div>
-                            <input id="5" type="radio" name="answer5">
-                            <label for="5">호흡</label>
+                            <input id="d5" type="radio" name="answer4" value=10>
+                            <label for="d5">호흡</label>
                         </div>
                     </div>    
                     <div class="btn_wrap btn_sort">
-                        <button class="prev_btn">이 전</button>
-                        <button class="next_btn">다 음</button>
+                        <button id="prev_btn3" class="prev_btn">이 전</button>
+                        <button id="next_btn3" class="next_btn">다 음</button>
                     </div>
                 </div>
                 <div class="test">
@@ -184,29 +304,29 @@
                     </div>
                     <div class="answer">
                         <div>
-                            <input id="1" type="radio" name="answer1">
-                            <label for="1">난도질 당한 소파</label>
+                            <input id="e1" type="radio" name="answer5" value=1>
+                            <label for="e1">난도질 당한 소파</label>
                         </div>
                         <div>
-                            <input id="2" type="radio" name="answer2">
-                            <label for="2">벽걸이 TV 떨어짐</label>
+                            <input id="e2" type="radio" name="answer5" value=3>
+                            <label for="e2">벽걸이 TV 떨어짐</label>
                         </div>
                         <div>
-                            <input id="3" type="radio" name="answer3">
-                            <label for="3">모니터에 생긴 손톱 자국</label>
+                            <input id="e3" type="radio" name="answer5" value=5>
+                            <label for="e3">모니터에 생긴 손톱 자국</label>
                         </div>
                         <div>
-                            <input id="4" type="radio" name="answer4">
-                            <label for="4">이빨 자국이 생긴 옷</label>
+                            <input id="e4" type="radio" name="answer5" value=7>
+                            <label for="e4">이빨 자국이 생긴 옷</label>
                         </div>
                         <div>
-                            <input id="5" type="radio" name="answer5">
-                            <label for="5">엎질러진 물</label>
+                            <input id="e5" type="radio" name="answer5" value=10>
+                            <label for="e5">엎질러진 물</label>
                         </div>
                     </div>    
                     <div class="btn_wrap btn_sort">
-                        <button class="prev_btn">이 전</button>
-                        <input type="submit" value="제 출" class="submit_btn">
+                        <button id="prev_btn4" class="prev_btn">이 전</button>
+                        <input type="button"  value="제 출" class="submit_btn" onclick="test()">
                     </div>
                 </div>
             </form>

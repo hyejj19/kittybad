@@ -10,6 +10,7 @@
   width: 95vw;
   height: 100vh;
   font-family: "Pretendard-Regular";
+  margin-bottom: 20px;
 }
 
 .cat-card {
@@ -61,8 +62,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 800px;
-  min-width: 800px;
+  width: 900px;
+  min-width: 900px;
   height: 400px;
   min-height: 400px;
   top: 20vh;
@@ -71,7 +72,7 @@
   display: flex;
   justify-content: flex-start;
   font-family: "Pretendard-Regular";
-  left: 25%; /* 모달창 가운데 정렬이 잘 안됌 */
+  left: 20%; /* 모달창 가운데 정렬이 잘 안됌 */
 }
 
 /* 고양이 이미지 */

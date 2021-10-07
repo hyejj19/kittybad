@@ -189,5 +189,68 @@ def cat_list():
     return render_template('/cat_list.html')
 
 
+# 카드 모달  아이디 정보
+@app.route('/cat_list_modal_r', methods=['GET'])
+def cat_list_modal_r():
+    global modal_cat_id
+    modal_cat_id = request.args.get('id_give')
+    return modal_cat_id
+
+# 카드 모달 데이터 전달
+
+
+@app.route('/cat_list_modal_g', methods=['GET'])
+def cat_list_modal_g():
+    modal_info = db.child("고양이").child(sido).child(
+        '유기번호').child(modal_cat_id).get().val()
+    return jsonify({'msg': dict(modal_info)})
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
+
+
+# Cat Test ~ 1   Result1~7 페이지
+@app.route("/cat_test")
+def cat_test():
+    return render_template("cat_test.html")
+
+
+@app.route("/cat_test1")
+def cat_test1():
+    return render_template("cat_test1.html")
+
+
+@app.route("/result1")
+def result1():
+    return render_template("result1.html")
+
+
+@app.route("/result2")
+def result2():
+    return render_template("result2.html")
+
+
+@app.route("/result3")
+def result3():
+    return render_template("result3.html")
+
+
+@app.route("/result4")
+def result4():
+    return render_template("result4.html")
+
+
+@app.route("/result5")
+def result5():
+    return render_template("result5.html")
+
+
+@app.route("/result6")
+def result6():
+    return render_template("result6.html")
+
+
+@app.route("/result7")
+def result7():
+    return render_template("result7.html")

@@ -113,6 +113,11 @@
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px rgb(53, 53, 53);
   transform: translateX(-50%);
+  transition: color 0.2s linear;
+}
+
+.circle-section__span-show1:hover {
+  color: var(--bg-color);
 }
 
 /*circle 내의 divider*/
@@ -133,6 +138,11 @@
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px rgb(53, 53, 53);
   transform: translateX(-50%);
+  transition: color 0.2s linear;
+}
+
+.circle-section__span-show2:hover {
+  color: var(--bg-color);
 }
 
 /*마우스를 올리면 사라질 충청,전라,경상도*/

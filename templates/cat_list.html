@@ -8,7 +8,7 @@
     <title>데려갈꼬냥? | 지역별 고양이</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     crossorigin="anonymous">
 
@@ -55,14 +55,14 @@
                         let cat_id = cats[numbers]['유기번호']; 
                         let cat_img = cats[numbers]['고양이사진 주소'];
                         let cat_number = cats[numbers]['공고 번호']; 
-                        let cat_color = cats[numbers]['고양이 색']; 
+                        /*let cat_color = cats[numbers]['고양이 색']; 
                         let cat_sex = cats[numbers]['성별']; 
                         let cat_kg = cats[numbers]['몸무게']; 
                         let cat_note = cats[numbers]['특징']; 
                         let cat_region = cats[numbers]['지역']; 
                         let cat_center = cats[numbers]['보호소 명']; 
                         let cat_address = cats[numbers]['보호소 주소']; 
-                        let cat_call = cats[numbers]['보호소 연락처'];
+                        let cat_call = cats[numbers]['보호소 연락처'];*/
 
                         //console.log(cat_number);
                         let catCard = `<div id= "${cat_id}" " class="cat-card" style="width: 18rem;" onclick="giveId(${cat_id})">
@@ -70,31 +70,59 @@
                             <p class="card-text">${cat_number}</p>
                         </div>`
 
+                        /*let modalData = `<img class="modal-img" src="${cat_img}" alt="고양이 이미지">
+                        <img class="modal-logo" src="/static/logo.png" alt="데려갈꼬냥?" >
+                                <ul>
+                                    <li>
+                                        <span class="modal-title">공고번호</span><span class="modal-text">${cat_number}</span>
+                                    </li>
+                                    <li>
+                                        <span class="modal-title">색상 / 성별</span><span class="modal-text">${cat_color}/${cat_sex}</span>
+                                        <br>
+                                        <span class="modal-title">체중</span><span class="modal-text">${cat_kg}</span>
+                                        <br>
+                                        <span class="modal-title">특징</span><span class="modal-text">${cat_note}</span>
+                                        <br>
+                                    </li>
+                                    <li>
+                                        <span class="modal-title">관할기관</span><span class="modal-text">${cat_region}</span>
+                                        <br>
+                                        <span class="modal-title">보호센터</span><span class="modal-text">${cat_center}</span>
+                                        <br>
+                                        <span class="modal-title">주소</span><span class="modal-text">${cat_address}</span>
+                                        <br>
+                                        <span class="modal-title">연락처</span><span class="modal-text">${cat_call}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>`*/
+
                         $('.catcards-box').append(catCard);
+                        //$('.modal__content').append(modalData);
                     }
                 }})
             });
 
-        /*$(function(){ //모달창 띄우기
+        /*function clickModal(){ //모달창 띄우기
 
-                $(`${cat_id}`).click(function(){
-                            $(".modal").fadeIn('fast');  //cat-card click-> onModal
-            });
+                $(${cat_id}).click(function(){
+                    $(".modal").fadeIn('fast');  //cat-card click-> onModal
+                });
             
-                    $(".modal__overlay").click(function(){
-                            $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
-                    });
-        });*/
+                $(".modal__overlay").click(function(){
+                    $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
+                });
+        };*/
+
+        //giveId(${cat_id})
     
     </script>
-    
-
 
 </head>
 
 <style>
     body {
-        background: linear-gradient(var(--bg-color),white);
+        background-color: var(--bg-color);
         height: 200vh;
         width: 100vw;
       }
@@ -111,69 +139,60 @@
                 <li><a href="/login">LOGIN</a></li>
             </ul>
             <ul class="nav-bar__list-2">
-                <li><a href="#">나의 고양이 취향은?</a></li>
+                <li><a href="/cat_test">나의 고양이 취향은?</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Menu-bar -->
     <div class="menu-bar">
-        <img src="/static/logo.png" alt="로고입니다." onclick="location.href='regions.html'">
+        <img src="/static/logo.png" alt="로고입니다." onclick="location.href='/regions'">
 
-        <li class="menu-bar-box">
-            <span class="do-name">도 이름</span>
-        </li>
+        <ul class="menu-bar-box">
+            <li class="do-name" onclick="loadCadCard('서울특별시');movePage()">서울특별시</li>
+            <li class="do-name" onclick="loadCadCard('부산광역시');movePage()">부산광역시</li>
+            <li class="do-name" onclick="loadCadCard('인천광역시');movePage()">인천광역시</li>
+            <li class="do-name" onclick="loadCadCard('대전광역시');movePage()">대전광역시</li>
+            <li class="do-name" onclick="loadCadCard('광주광역시');movePage()">광주광역시</li>
+            <li class="do-name" onclick="loadCadCard('대구광역시');movePage()">대구광역시</li>
+            <li class="do-name" onclick="loadCadCard('울산광역시');movePage()">울산광역시</li>
+            <hr class="menu-bar-hr">
+            <li class="do-name" onclick="loadCadCard('경기도');movePage()">경기도</li>
+            <li class="do-name" onclick="loadCadCard('강원도');movePage()">강원도</li>
+            <li class="do-name" onclick="loadCadCard('충청북도');movePage()">충청북도</li>
+            <li class="do-name" onclick="loadCadCard('충청남도');movePage()">충청남도</li>
+            <li class="do-name" onclick="loadCadCard('전라북도');movePage()">전라북도</li>
+            <li class="do-name" onclick="loadCadCard('전라남도');movePage()">전라남도</li>
+            <li class="do-name" onclick="loadCadCard('경상북도');movePage()">경상북도</li>
+            <li class="do-name" onclick="loadCadCard('경상남도');movePage()">경상남도</li>
+            <li class="do-name" onclick="loadCadCard('제주도');movePage()">제주도</li>
+        </ul>
     </div>
     
     <!-- 고양이 카드 박스 :: id를 공고번호로 주어서 카드 특정 -->
     <div class="catcards-box">
-        <!-- <div id= ${'cat_number'} class="cat-card" style="width: 18rem;" onclick="location.href='#'">
-            <img class="card-img-top" src="https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg" alt="Card image cap">
-            <p class="card-text">공고번호가 들어올 자리 ^^</p>
-        </div> -->
     </div>
    
     <!-- 모달창 -->
     <div class="modal hidden">
     <div class="modal__overlay"></div>
         <div class="modal__content">
-            <!-- <img class="modal-img" src="https://www.animal.go.kr/front/fileMng/imageView.do?f=/files/shelter/2021/09/202109251009790.jpg" alt="고양이 이미지">
-            <img class="modal-logo" src="/static/logo.png" alt="데려갈꼬냥?" >
-            <ul>
-                <li>
-                    <span class="modal-title">공고번호</span><span class="modal-text">서울-관악-2021-00449</span>
-                </li>
-                <li>
-                    <span class="modal-title">색상 / 성별</span><span class="modal-text">삼색 / 암컷</span>
-                    <br>
-                    <span class="modal-title">나이 / 체중</span><span class="modal-text">2021(년생) / 0.4(kg)</span>
-                    <br>
-                    <span class="modal-title">특징</span><span class="modal-text">구청신고,탈진,호흡기질환,설사</span>
-                    <br>
-                    <span class="modal-title">중성화</span><span class="modal-text">아니오</span>
-                </li>
-                <li>
-                    <span class="modal-title">관할기관</span><span class="modal-text">서울특별시 관악구</span>
-                    <br>
-                    <span class="modal-title">보호센터</span><span class="modal-text">러브펫종합동물병원</span>
-                    <br>
-                    <span class="modal-title">주소</span><span class="modal-text">서울특별시 관악구 남부순환로 1429 (신림동)</span>
-                    <br>
-                    <span class="modal-title">연락처</span><span class="modal-text">02-837-8875</span>
-                </li>
-            </ul> -->
         </div>
     </div> 
 
     
     <script>
 
-        
-        // 카드 클릭시 id 전달
-        function giveId(cat_id){ // 시도 이름 전달 : cat_id(유기번)
+        //메뉴바 페이지 이동 함수
+        function movePage() {
+            window.location.href ="/cat_list";
+        }
+
+        //모달창 관련 ajax
+        function giveId(cat_id){ // 카드 클릭시 id 전달
             $.ajax({
                 type : "GET",
-                url: "/cat_modal_info", //json 경로
+                url: "/cat_list_modal_r", //json 경로
                 data : {id_give: cat_id}, //도시이름
                 success: function(){ 
                     showModal();
@@ -186,35 +205,36 @@
 
 
         // 특정 모달창 on
-        function showModal(){ //고양이 카드를 클릭했을 때 유기번호 전달
+        function showModal(){ //id 검색 -> 해당되는 정보 받아옴 -> 모달로 보여주기
             //alert($(this).val());
+            
             $.ajax({
                 type : "GET",
-                url : "/cat_modal_info", //json 경로
+                url : "/cat_list_modal_g", //json 경로
                 data : {},
                 success: function(data){
                     //console.log(data['msg'])
-                    let cats = data['msg']
-                    //console.log(cats);
-                   
-                    for(let numbers in cats) {
+                    let cat = data['msg']
+                    console.log(cat);
+                    //for(let numbers in cats) 
+                        {
                         //let cat_number = cats[i]['유기번호']
                         //console.log(numbers,cats[numbers]);
-                        let cat_id = cats[numbers]['유기번호']; 
-                        let cat_img = cats[numbers]['고양이사진 주소'];
-                        let cat_number = cats[numbers]['공고 번호']; 
-                        let cat_color = cats[numbers]['고양이 색']; 
-                        let cat_sex = cats[numbers]['성별']; 
-                        let cat_kg = cats[numbers]['몸무게']; 
-                        let cat_note = cats[numbers]['특징']; 
-                        let cat_region = cats[numbers]['지역']; 
-                        let cat_center = cats[numbers]['보호소 명']; 
-                        let cat_address = cats[numbers]['보호소 주소']; 
-                        let cat_call = cats[numbers]['보호소 연락처'];
-                        
+                        let cat_id = cat['유기번호'];
+                        //console.log(cat_id); 
+                        let cat_img = cat['고양이사진 주소'];
+                        let cat_number = cat['공고 번호']; 
+                        let cat_color = cat['고양이 색']; 
+                        let cat_sex = cat['성별']; 
+                        let cat_kg = cat['몸무게']; 
+                        let cat_note = cat['특징'];
+                        let cat_region = cat['지역'];
+                        let cat_center = cat['보호소 명'];
+                        let cat_address = cat['보호소 주소'];
+                        let cat_call = cat['보호소 연락처'];
                         
                         let modalData = `<img class="modal-img" src="${cat_img}" alt="고양이 이미지">
-                        <img class="modal-logo"  src="/static/logo.png" alt="데려갈꼬냥?" >
+                        <img class="modal-logo" src="/static/logo.png" alt="데려갈꼬냥?" >
                                 <ul>
                                     <li>
                                         <span class="modal-title">공고번호</span><span class="modal-text">${cat_number}</span>
@@ -240,17 +260,19 @@
                             </li>
                         </ul>`
 
+                        $(".modal__content").empty();
                         $('.modal__content').append(modalData); //모달창에 데이터 뜸
                         $(".modal").fadeIn('fast');
+                        
+                        
                 }}
             })
         };
 
-
         //모달 아웃 기능
         $(".modal__overlay").click(function(){
-                $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
-        }); 
+            $(".modal").fadeOut('fast'); //영역 밖 click-> offModal
+        });
 
         
     </script>
