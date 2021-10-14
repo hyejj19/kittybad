@@ -1,5 +1,5 @@
-import re
-from flask import Flask, render_template, request, url_for, redirect, session, jsonify
+
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify, flash
 import pyrebase
 import json
 import datetime
@@ -98,6 +98,7 @@ def login_done():
     pwd = request.form['pwd']  # login.html(로그인 페이지)에서 받아온 비밀번호 값
     users = db.child('users').get().val()  # 데이터베이스에서 유저 id 값들을 딕셔너리형태로 반환
     if users == None:   # 데이터베이스에 유저 id 값이 아무것도 없을 경우
+        flash("정보를 제대로 입력해주세요")
         return redirect(url_for('login'))  # 로그인 페이지로 머물러있어
 
     else:  # 데이터베이스에 유저 id 값이 아무거나 한개라도 있을 경우
@@ -113,8 +114,10 @@ def login_done():
                 return redirect(url_for('index'))
 
             else:  # 비밀번호가 일치하지 않을 경우
+                flash("정보를 제대로 입력해주세요")
                 return redirect(url_for('login'))  # 로그인 페이지에 계속 머무르게 함
         except:  # 에러 발생시 작동    # 로그인 페이지에서 입력한 id 값이 데이터베이스에 없을 경우 에러가 남.
+            flash("정보를 제대로 입력해주세요")
             return redirect(url_for('login'))  # 로그인 페이지에 계속 머무르게 함
 
     # 아이디 중복확인
@@ -145,27 +148,31 @@ def signup_done():
     pwd = request.form['pwd']  # join.html에서 pwd에 입력한 값을 가져옴
     email = request.form['email']  # join.html에서 email에 입력한 값을 가져옴
     name = request.form['name']  # join.html에서 name에 입력한 값을 가져옴
+    if (uid == "") or (pwd =="") or (email == "") or (name == ""):
+        flash("정보를 제대로 입력해주세요")
+        return redirect(url_for("signup"))
 
-    information = {
-        "pwd": pwd,
-        'email': email,
-        'name': name
-    }
+    else:
+        information = {
+            "pwd": pwd,
+            'email': email,
+            'name': name
+        }
 
-    users = db.child('users').get().val()  # 데이터베이스에서 유저 id 값들을 딕셔너리형태로 반환
+        users = db.child('users').get().val()  # 데이터베이스에서 유저 id 값들을 딕셔너리형태로 반환
 
-    if users == None:  # 데이터 베이스에 아무것도 없을 경우
-        db.child("users").child(uid).set(information)  # 데이터 베이스에 아이디 및 개인정보 추가
-        return redirect(url_for("index"))  # 회원가입 완료했으면 index 페이지로 가
-    else:  # 데이터 베이스에 아무 자료라도 있을 경우
-        for i in users:  # 데이터베이스에 있는 모든 유저 id 값을 한개씩 i 값에 대입
-            if uid == i:  # 데이터베이스에 있는 모든 유저 id 갑 중에서 회원가입하려는 id 값이 있을 경우
-                return redirect(url_for("signup"))  # 회원 가입 페이지에 그대로 유지
-            else:  # 데이터 베이스에 있는 모든 유저 id 값 중에서 회원가입하려는 id 값이 없을 경우
-                db.child("users").child(uid).set(
-                    information)  # 데이터베이스에 아이디 및 개인정보 추가
-                return redirect(url_for("index"))  # 회원 가입 완료했으니 index 페이지로 가
-
+        if users == None:  # 데이터 베이스에 아무것도 없을 경우
+            db.child("users").child(uid).set(information)  # 데이터 베이스에 아이디 및 개인정보 추가
+            return redirect(url_for("index"))  # 회원가입 완료했으면 index 페이지로 가
+        else:  # 데이터 베이스에 아무 자료라도 있을 경우
+            for i in users:  # 데이터베이스에 있는 모든 유저 id 값을 한개씩 i 값에 대입
+                if uid == i:  # 데이터베이스에 있는 모든 유저 id 갑 중에서 회원가입하려는 id 값이 있을 경우
+                    flash("이미 있는 아이디입니다.")
+                    return redirect(url_for("signup"))  # 회원 가입 페이지에 그대로 유지
+                else:  # 데이터 베이스에 있는 모든 유저 id 값 중에서 회원가입하려는 id 값이 없을 경우
+                    db.child("users").child(uid).set(
+                        information)  # 데이터베이스에 아이디 및 개인정보 추가
+                    return redirect(url_for("index"))  # 회원 가입 완료했으니 index 페이지로 가
 
 #  api 시도 받는 역할
 @app.route('/cat_card_sido', methods=['GET', 'POST'])

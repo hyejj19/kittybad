@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link href="/static/css/styles.css" rel="stylesheet" />
 
+    <!-- juery -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 
@@ -50,6 +52,9 @@
         color: black;
         font-size: 30px;
     }
+    .error{
+        color: red;
+    }
 </style>
 
 <body>
@@ -89,6 +94,12 @@
                 </div>
                 <div class="join_submit">
                     <input type="submit" value="Click">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <br><br>
+                    <p class = "error" >&nbsp &nbsp{{messages[-1]}}</p>
+                    {% endif %}
+                    {% endwith %}
                 </div>
             </form>    
         </div>

@@ -4,10 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>데려갈꼬냥? | login</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
     <link href="/static/css/styles.css" rel="stylesheet" />
+=======
+    <title>데려갈꼬냥? | Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <link href="/static/css/styles.css" rel="stylesheet" />
+    <!-- ajax.js import -->
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+</head>
+<script>
+    function login(){
+        $.ajax({
+            type : "GET",
+            url: "/login_done", 
+            data : {},
+            success: function(data){
+                if (data['login'] == True){
+                    window.location.href='/';
+                }
+            }
+        })
+    };
+    
+</script>
+>>>>>>> Stashed changes
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -49,6 +77,9 @@
         align-items: center;
         justify-content: center;
     }  
+    .error{
+        color: red;
+    }
 </style>
 
 <body>
@@ -80,7 +111,12 @@
                     <h4>Password</h4>
                     <input type="password" name="pwd" placeholder="Password">
                 </div>
-    
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <br>
+                <p class = "error" >&nbsp &nbsp{{messages[-1]}}</p>
+                {% endif %}
+                {% endwith %}
                 <div class="login-login__submit">
                     <input type="submit" value="로그인" onclick="logIn()">
                 </div>
